@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    <changeSet author="valper" id="changelog-1.0">
+        <createTable tableName="player">
+            <column autoIncrement="true" name="id" type="number">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+
+        <addUniqueConstraint
+                columnNames="name"
+                constraintName="player_name_unique_constraint"
+                tableName="player"/>
+    </changeSet>
+</databaseChangeLog>

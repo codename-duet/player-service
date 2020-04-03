@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 public class ServiceConfig {
 
     @Bean
-    public PlayerServiceImpl playerService(final PlayerRepository inMemoryPlayerRepository) {
-        return new PlayerServiceImpl(inMemoryPlayerRepository);
+    public PlayerServiceImpl playerService(final PlayerRepository playerRepository) {
+        return new PlayerServiceImpl(playerRepository);
     }
 }

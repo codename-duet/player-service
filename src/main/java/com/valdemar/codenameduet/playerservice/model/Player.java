@@ -2,13 +2,21 @@ package com.valdemar.codenameduet.playerservice.model;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Value;
+import lombok.Data;
+import lombok.With;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.PersistenceConstructor;
 
-@Value
-@Builder
-@AllArgsConstructor(access = AccessLevel.PRIVATE) //Hides the constructor to force usage of the Builder.
+@Data
+@AllArgsConstructor(access = AccessLevel.PRIVATE, onConstructor = @__(@PersistenceConstructor))
 public final class Player {
-    private final long id;
-    private final String playerName;
+    @Id @With
+    private final Long id;
+    private final String name;
+
+    public Player(String name) {
+
+        this.id = null;
+        this.name = name;
+    }
 }

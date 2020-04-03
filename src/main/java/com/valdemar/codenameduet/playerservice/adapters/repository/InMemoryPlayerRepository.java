@@ -23,6 +23,6 @@ public final class InMemoryPlayerRepository implements PlayerRepository {
     @Override
     public Player playerDetails(long playerId) {
         //TODO: handle exception when id does not exist
-        return Player.builder().id(playerId).playerName(registeredPlayers.get(playerId)).build();
+        return new Player(registeredPlayers.get(playerId)).withId(playerId);
     }
 }

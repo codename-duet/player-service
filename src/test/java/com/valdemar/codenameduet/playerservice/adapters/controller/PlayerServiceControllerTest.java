@@ -2,8 +2,8 @@ package com.valdemar.codenameduet.playerservice.adapters.controller;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.valdemar.codenameduet.playerservice.adapters.controller.PlayerServiceController;
 import com.valdemar.codenameduet.playerservice.adapters.controller.request.RegisterPlayerRequest;
+import com.valdemar.codenameduet.playerservice.adapters.repository.PlayerRepositorySpringJDBCData;
 import com.valdemar.codenameduet.playerservice.ports.PlayerService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -31,11 +31,13 @@ class PlayerServiceControllerTest {
     private MockMvc mockMvc;
 
     @MockBean
+    private PlayerRepositorySpringJDBCData playerRepositorySpringJDBCData;
+
+    @MockBean
     private PlayerService playerService;
 
     // This object will be magically initialized by the initFields method below.
     private JacksonTester<RegisterPlayerRequest> jsonPlayer;
-
 
     @BeforeEach
     public void setup() {

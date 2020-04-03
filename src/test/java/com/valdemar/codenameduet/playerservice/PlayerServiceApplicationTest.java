@@ -15,6 +15,7 @@ import org.springframework.boot.test.json.JacksonTester;
 import org.springframework.http.MediaType;
 import org.springframework.restdocs.RestDocumentationContextProvider;
 import org.springframework.restdocs.RestDocumentationExtension;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -38,8 +39,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrlPattern;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@SpringBootTest
+@SpringBootTest(classes = PlayerServiceApplication.class)
 @ExtendWith({RestDocumentationExtension.class, SpringExtension.class})
+@ActiveProfiles("h2")
 class PlayerServiceApplicationTest {
 
 
@@ -82,7 +84,7 @@ class PlayerServiceApplicationTest {
                         .content(jsonPlayer.write(playerRequest()).getJson())
         )
                 .andExpect(status().isCreated())
-                .andExpect(redirectedUrlPattern("http://*/player/0"))
+                .andExpect(redirectedUrlPattern("http://*/player/1"))
                 .andDo(document("register-player",
                         requestFields(
                                 fieldWithPath("playerName").description("Player's Name"))));

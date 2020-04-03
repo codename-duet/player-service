@@ -40,7 +40,7 @@ public class PlayerServiceController {
     PlayerDetailResponse playerDetails(@PathVariable long playerId) {
         Player player = playerService.playerDetails(playerId);
 
-        return PlayerDetailResponse.builder().playerName(player.getPlayerName()).build();
+        return PlayerDetailResponse.builder().playerName(player.getName()).build();
     }
 
 

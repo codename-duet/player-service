@@ -19,6 +19,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 
 import javax.servlet.RequestDispatcher;
@@ -42,6 +43,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = PlayerServiceApplication.class)
 @ExtendWith({RestDocumentationExtension.class, SpringExtension.class})
 @ActiveProfiles("h2")
+@Transactional
 class PlayerServiceApplicationTest {
 
 
@@ -84,7 +86,7 @@ class PlayerServiceApplicationTest {
                         .content(jsonPlayer.write(playerRequest()).getJson())
         )
                 .andExpect(status().isCreated())
-                .andExpect(redirectedUrlPattern("http://*/player/1"))
+                .andExpect(redirectedUrlPattern("http://*/player/*"))
                 .andDo(document("register-player",
                         requestFields(
                                 fieldWithPath("playerName").description("Player's Name"))));

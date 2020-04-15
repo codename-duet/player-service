@@ -13,7 +13,7 @@ public class PlayerRepoSpringJDBCDataAdapter implements PlayerRepository {
 
     @Override
     public long createPlayer(String playerName) {
-        Player player = playerRepository.save( new Player(playerName));
+        Player player = playerRepository.save(new Player(playerName));
         return player.getId();
     }
 

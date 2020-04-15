@@ -10,7 +10,8 @@ import org.springframework.data.annotation.PersistenceConstructor;
 @Data
 @AllArgsConstructor(access = AccessLevel.PRIVATE, onConstructor = @__(@PersistenceConstructor))
 public final class Player {
-    @Id @With
+    @Id
+    @With
     private final Long id;
     private final String name;
 

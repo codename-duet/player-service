@@ -25,23 +25,15 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@Disabled
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(PlayerServiceController.class)
-//@ContextConfiguration(classes = { RepositoryConfig.class })
 class PlayerServiceControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
 
-//    @MockBean
-//    private PlayerRepositorySpringJDBCData playerRepositorySpringJDBCData;
-
     @MockBean
     private PlayerService playerService;
-
-//    @MockBean
-//    private NamedParameterJdbcOperations namedParameterJdbcOperations;
 
     // This object will be magically initialized by the initFields method below.
     private JacksonTester<RegisterPlayerRequest> jsonPlayer;

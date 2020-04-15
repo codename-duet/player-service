@@ -1,5 +1,6 @@
 package com.valdemar.codenameduet.playerservice.adapters.repository;
 
+import com.valdemar.codenameduet.playerservice.config.DatabaseProperties;
 import com.valdemar.codenameduet.playerservice.config.RepositoryConfig;
 import com.valdemar.codenameduet.playerservice.model.Player;
 import org.junit.jupiter.api.Test;
@@ -13,7 +14,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(SpringExtension.class)
-@SpringBootTest(classes = RepositoryConfig.class)
+@SpringBootTest(classes = {DatabaseProperties.class, RepositoryConfig.class})
 @AutoConfigureJdbc
 @ActiveProfiles("h2")
 class PlayerRepositorySpringJDBCDataTest {
